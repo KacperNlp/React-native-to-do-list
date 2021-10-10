@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
 import Header from './components/Header';
+import TasksList from './components/TasksList';
 
 export default function App() {
   const [tasksList, setTasksList] = useState([]);
@@ -24,6 +25,9 @@ export default function App() {
     <View style={styles.container}>
       <Header 
         addNewTask={setNewTask}
+      />
+      <TasksList
+        tasks={tasksList}
       />
     </View>
   );

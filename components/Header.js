@@ -9,15 +9,16 @@ import {
 const Header = ({ addNewTask }) => {
     const [currentInputValue, setCurrentInputValue] = useState('');
 
-    const handleChangeInputValue = (value) => {
-        setCurrentInputValue(value);
+    const handleChangeInputValue = ({target}) => {
+        console.log(target.value)
+        setCurrentInputValue(target.value);
     }
 
     return (
         <View>
             <View style={style.buttonsContainer}>
-                <Button title="Show tasks" color="#ed8a09" onPress={() => addNewTask(currentInputValue) } />
-                <Button title="Add task" color="#53b53a" />
+                <Button title="Show tasks" color="#ed8a09" />
+                <Button title="Add task" color="#53b53a" onPress={() => addNewTask(currentInputValue) } />
                 <Button title="Remove task" color="#db3d45" />
             </View>
             <View style={style.inputStyles}>
