@@ -5,9 +5,26 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import Header from './components/Header';
 
 export default function App() {
+  const [tasksList, setTasksList] = useState([]);
+
+  const setNewTask = (task) => {
+    if(!task.length)
+      return null;
+
+    const randomKeyForTask = Math.random() + '';
+    const objectWithTaskForArray = {
+      task: task,
+      key: randomKeyForTask
+    };
+
+    setTasksList([...tasksList, objectWithTaskForArray]);
+  }
+
   return (
     <View style={styles.container}>
-      <Header/>
+      <Header 
+        addNewTask={setNewTask}
+      />
     </View>
   );
 }

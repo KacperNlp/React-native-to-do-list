@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
     View, 
     Button, 
@@ -6,16 +6,26 @@ import {
     StyleSheet 
 } from 'react-native';
 
-const Header = (props) => {
+const Header = ({ addNewTask }) => {
+    const [currentInputValue, setCurrentInputValue] = useState('');
+
+    const handleChangeInputValue = (value) => {
+        setCurrentInputValue(value);
+    }
+
     return (
         <View>
             <View style={style.buttonsContainer}>
-                <Button title="Show tasks" color="#ed8a09" />
+                <Button title="Show tasks" color="#ed8a09" onPress={() => addNewTask(currentInputValue) } />
                 <Button title="Add task" color="#53b53a" />
                 <Button title="Remove task" color="#db3d45" />
             </View>
             <View style={style.inputStyles}>
-                <TextInput placeholder="Your task.." />
+                <TextInput 
+                    placeholder="Your task.." 
+                    value={currentInputValue} 
+                    onChange={handleChangeInputValue}
+                />
             </View>
         </View>
     )
