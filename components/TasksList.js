@@ -1,8 +1,18 @@
 import React from 'react';
-import { FlatList, View, StyleSheet } from 'react-native';
+import { FlatList, View, StyleSheet, Text } from 'react-native';
 
-const TasksList = ({tasks}) => {
-    const renderTasks = tasks => <Text>{tasks.item.task}</Text>
+import Task from './Task';
+
+const TasksList = ({tasks, handleChangeTaskCheckBox}) => {
+    const renderTasks = tasks => (
+        <View>
+            <Task 
+            task={tasks.item.task} 
+            taskKey={tasks.item.key}
+            isChecked={tasks.item.checked} 
+            handleChangeTaskCheckBox={handleChangeTaskCheckBox}/>
+        </View>
+    )
 
     return (
         <View style={style.listContainer}>

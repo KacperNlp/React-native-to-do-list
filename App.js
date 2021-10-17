@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 
@@ -15,10 +14,27 @@ export default function App() {
     const randomKeyForTask = Math.random() + '';
     const objectWithTaskForArray = {
       task: task,
-      key: randomKeyForTask
+      key: randomKeyForTask,
+      checked: false
     };
 
     setTasksList([...tasksList, objectWithTaskForArray]);
+  }
+
+  const changeCheckedTasks = (id) => {
+    const newTaskList = tasksList.map(task => {
+      if(task.key != id)
+        return task;
+      
+      const changedTask = {
+        key: task.key,
+        task: task.task,
+        checked: !task.checked
+      };
+      return changedTask;
+    })
+
+    setTasksList(newTaskList)
   }
 
   return (
@@ -28,6 +44,7 @@ export default function App() {
       />
       <TasksList
         tasks={tasksList}
+        handleChangeTaskCheckBox={changeCheckedTasks}
       />
     </View>
   );

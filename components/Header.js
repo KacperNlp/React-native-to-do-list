@@ -9,9 +9,8 @@ import {
 const Header = ({ addNewTask }) => {
     const [currentInputValue, setCurrentInputValue] = useState('');
 
-    const handleChangeInputValue = ({target}) => {
-        console.log(target.value)
-        setCurrentInputValue(target.value);
+    const handleChangeInputValue = (inputValue) => {
+        setCurrentInputValue(inputValue);
     }
 
     return (
@@ -25,7 +24,7 @@ const Header = ({ addNewTask }) => {
                 <TextInput 
                     placeholder="Your task.." 
                     value={currentInputValue} 
-                    onChange={handleChangeInputValue}
+                    onChangeText={handleChangeInputValue}
                 />
             </View>
         </View>
