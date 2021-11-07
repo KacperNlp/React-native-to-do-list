@@ -11,11 +11,13 @@ export default function App() {
     if(!task.length)
       return null;
 
+    const number = tasksList.length + 1;
     const randomKeyForTask = Math.random() + '';
     const objectWithTaskForArray = {
       task: task,
       key: randomKeyForTask,
-      checked: false
+      checked: false,
+      number: number
     };
 
     setTasksList([...tasksList, objectWithTaskForArray]);
